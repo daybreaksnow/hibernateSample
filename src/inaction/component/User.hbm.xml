@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  <hibernate-mapping>
+  <class name="inaction.component.User" table="USER_COMPONENT" lazy="false">
+    <id name="id" type="long" column="user_id" >
+      <generator class="increment"/>
+    </id>
+    <property name="username" />
+    <component name="homeAddress" class="inaction.component.Address">
+		<property name="street" column="home_street"></property>
+    	<property name="city" column="home_city"></property>
+	    <property name="zipCode" column="home_zip_code"></property>
+    </component>
+
+	<component name="billingAddress" class="inaction.component.Address">
+		<property name="street" column="billing_street"></property>
+    	<property name="city" column="billing_city"></property>
+	    <property name="zipCode" column="billing_zip_code"></property>
+    </component>
+  </class>
+</hibernate-mapping>
