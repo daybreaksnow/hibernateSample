@@ -19,6 +19,8 @@
     <mapping resource="techscore/sample/SampleBook.hbm.xml"/>
     <mapping resource="inaction/component/User.hbm.xml"/>
     <mapping resource="inaction/inheritance/single/BillingDetails.hbm.xml"/>
+    <mapping resource="inaction/association/Bid.hbm.xml"/>
+    <mapping resource="inaction/association/Item.hbm.xml"/>
   </session-factory>
 
 </hibernate-configuration>

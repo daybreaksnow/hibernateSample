@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/01/04 18:39:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="inaction.association.Bid" table="bid" schema="public">
+        <id name="bidId" type="long">
+            <column name="bid_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="item" class="inaction.association.Item" fetch="select">
+            <column name="item_id" />
+        </many-to-one>
+        <property name="amount" type="java.lang.Long">
+            <column name="amount" />
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id" />
+        </property>
+        <property name="createdDate" type="date">
+            <column name="created_date" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

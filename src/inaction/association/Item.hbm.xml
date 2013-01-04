@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/01/04 18:39:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="inaction.association.Item" table="item" schema="public">
+        <id name="itemId" type="long">
+            <column name="item_id" />
+            <generator class="increment" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="256" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="256" />
+        </property>
+        <property name="initialPrice" type="java.lang.Long">
+            <column name="initial_price" />
+        </property>
+        <property name="reservePrice" type="java.lang.Long">
+            <column name="reserve_price" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="start_date" length="13" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="end_date" length="13" />
+        </property>
+        <property name="createdDate" type="date">
+            <column name="created_date" length="13" />
+        </property>
+        <set name="bids" table="bid" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="item_id" />
+            </key>
+            <one-to-many class="inaction.association.Bid" />
+        </set>
+    </class>
+</hibernate-mapping>
