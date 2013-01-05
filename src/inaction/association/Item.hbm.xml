@@ -29,6 +29,14 @@
         <property name="createdDate" type="date">
             <column name="created_date" length="13" />
         </property>
+        
+        <set name="itemCategoryMappings" table="item_category_mapping" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="item_id" not-null="true" />
+            </key>
+            <one-to-many class="inaction.fetch.ItemCategoryMapping" />
+        </set>
+        
         <set name="bids" table="bid" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
             <key>
                 <column name="item_id" />
