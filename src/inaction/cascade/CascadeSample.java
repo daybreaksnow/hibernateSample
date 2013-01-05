@@ -11,7 +11,8 @@ import techscore.sample.DaoSupport;
  */
 public class CascadeSample {
 	public static void main(String[] args) {
-		saveCategoryWithChild("parent", "child");
+		// saveCategoryWithChild("parent", "child");
+		addChild(8, "secondChild");
 		System.err.println("end");
 	}
 
@@ -41,7 +42,26 @@ public class CascadeSample {
 
 		// 関連の設定
 		parentCategory.getChildCategories().add(childCategory);
-		// childCategory.setParentCategory(parentCategory);
+		childCategory.setParentCategory(parentCategory);
+
+		session.save(parentCategory);
+		tx.commit();
+		session.close();
+	}
+
+	private static void addChild(long id, String childName) {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		Category parentCategory = (Category) session.get(Category.class, id);
+
+		Category childCategory = new Category();
+		childCategory.setName(childName);
+
+		// 関連の設定
+		parentCategory.getChildCategories().add(childCategory);
+		childCategory.setParentCategory(parentCategory);
 
 		session.save(parentCategory);
 		tx.commit();
