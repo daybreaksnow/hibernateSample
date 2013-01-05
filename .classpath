@@ -10,6 +10,9 @@
 	<classpathentry kind="lib" path="lib/hibernate/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="lib/postgresql-9.1-903.jdbc3.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-nop-1.5.8.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.5.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -70,4 +70,10 @@ public class Bid implements java.io.Serializable {
 		this.createdDate = createdDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Bid [bidId=" + bidId + ", amount=" + amount + ", userId="
+				+ userId + ", createdDate=" + createdDate + "]";
+	}
+
 }

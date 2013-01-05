@@ -114,4 +114,12 @@ public class Item implements java.io.Serializable {
 		this.bids = bids;
 	}
 
+	@Override
+	public String toString() {
+		return "Item [itemId=" + itemId + ", name=" + name + ", description="
+				+ description + ", initialPrice=" + initialPrice
+				+ ", reservePrice=" + reservePrice + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", createdDate=" + createdDate + "]";
+	}
+
 }
