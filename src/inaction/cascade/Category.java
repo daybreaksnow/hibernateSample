@@ -15,6 +15,7 @@ public class Category implements java.io.Serializable {
 	private Category parentCategory;
 	private String name;
 	private Date createdDate;
+	private Set itemCategoryMappings = new HashSet(0);
 	private Set childCategories = new HashSet(0);
 
 	public Category() {
@@ -71,6 +72,14 @@ public class Category implements java.io.Serializable {
 
 	public void setChildCategories(Set categories) {
 		this.childCategories = categories;
+	}
+	
+	public Set getItemCategoryMappings() {
+		return this.itemCategoryMappings;
+	}
+
+	public void setItemCategoryMappings(Set itemCategoryMappings) {
+		this.itemCategoryMappings = itemCategoryMappings;
 	}
 
 	@Override

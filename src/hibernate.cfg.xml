@@ -22,6 +22,7 @@
     <mapping resource="inaction/association/Bid.hbm.xml"/>
     <mapping resource="inaction/association/Item.hbm.xml"/>
     <mapping resource="inaction/cascade/Category.hbm.xml"/>
+    <mapping resource="inaction/fetch/ItemCategoryMapping.hbm.xml"/>
   </session-factory>
 
 </hibernate-configuration>

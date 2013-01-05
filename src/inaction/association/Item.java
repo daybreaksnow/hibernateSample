@@ -2,6 +2,8 @@ package inaction.association;
 
 // Generated 2013/01/04 18:39:30 by Hibernate Tools 3.4.0.CR1
 
+import inaction.fetch.ItemCategoryMapping;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +21,7 @@ public class Item implements java.io.Serializable {
 	private Date startDate;
 	private Date endDate;
 	private Date createdDate;
+	private Set itemCategoryMappings = new HashSet(0);
 	private Set bids = new HashSet(0);
 
 	public Item() {
@@ -104,6 +107,14 @@ public class Item implements java.io.Serializable {
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public Set<ItemCategoryMapping> getItemCategoryMappings() {
+		return this.itemCategoryMappings;
+	}
+
+	public void setItemCategoryMappings(Set itemCategoryMappings) {
+		this.itemCategoryMappings = itemCategoryMappings;
 	}
 
 	public Set getBids() {
