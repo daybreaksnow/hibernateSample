@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/01/05 23:20:24 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="inaction.cascade.Category" table="category" schema="public">
+        <id name="categoryId" type="long">
+            <column name="category_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="parentCategory" class="inaction.cascade.Category" fetch="select">
+            <column name="parent_category_id" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="256" />
+        </property>
+        <property name="createdDate" type="date">
+            <column name="created_date" length="13" />
+        </property>
+        <set name="childCategories" table="category" inverse="true" lazy="true" fetch="select" cascade="save-update">
+            <key>
+                <column name="parent_category_id" />
+            </key>
+            <one-to-many class="inaction.cascade.Category" />
+        </set>
+    </class>
+</hibernate-mapping>

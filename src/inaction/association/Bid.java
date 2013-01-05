@@ -10,6 +10,7 @@ import java.util.Date;
 public class Bid implements java.io.Serializable {
 
 	private long bidId;
+	// TODO item_idを持たせ、そのIDを使って関連を取得するようにはできないのか？？
 	private Item item;
 	private Long amount;
 	private Long userId;

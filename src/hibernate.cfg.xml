@@ -21,6 +21,7 @@
     <mapping resource="inaction/inheritance/single/BillingDetails.hbm.xml"/>
     <mapping resource="inaction/association/Bid.hbm.xml"/>
     <mapping resource="inaction/association/Item.hbm.xml"/>
+    <mapping resource="inaction/cascade/Category.hbm.xml"/>
   </session-factory>
 
 </hibernate-configuration>

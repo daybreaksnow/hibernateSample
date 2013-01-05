@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 
 import techscore.sample.DaoSupport;
 
-public class Main {
+public class RelationSample {
 	public static void main(String[] args) {
 		// saveBid();
 		// saveItem();

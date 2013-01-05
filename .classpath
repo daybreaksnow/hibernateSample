@@ -5,7 +5,7 @@
 	<classpathentry kind="lib" path="lib/hibernate/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/commons-collections-3.1.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/hibernate3.jar" sourcepath="jarsrc/hibernate-core-3.5.2-Final-sources.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/javassist-3.9.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/slf4j-api-1.5.8.jar"/>
