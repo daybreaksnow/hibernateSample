@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/01/06 14:25:01 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="inaction.valuecollection.ItemImage" table="item_image" schema="public">
+        <id name="imageId" type="long">
+            <column name="image_id" />
+            <generator class="increment" />
+        </id>
+        <version name="version" type="java.lang.Integer">
+            <column name="version" />
+        </version>
+        <many-to-one name="item" class="inaction.association.Item" fetch="select">
+            <column name="item_id" not-null="true" />
+        </many-to-one>
+        <property name="fileName" type="string">
+            <column name="file_name" length="256" not-null="true" />
+        </property>
+        <property name="createdDate" type="date">
+            <column name="created_date" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>
