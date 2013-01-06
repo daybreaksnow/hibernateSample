@@ -26,6 +26,9 @@ public class ValueCollectionSample {
 
 		Item item = (Item) session.get(Item.class, id);
 		System.out.println(item.getItemImages());
+		System.out.println(item.getItemImageMap().get("hoge.png"));
+		System.out.println(item.getItemImageMap());
+
 	}
 
 	private static void saveImage(Long itemId, String fileName) {

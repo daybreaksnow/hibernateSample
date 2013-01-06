@@ -14,3 +14,10 @@ ALTER TABLE ITEM_IMAGE ADD CONSTRAINT ITEM_IMAGE_FK
  FOREIGN KEY (item_id)
  REFERENCES ITEM(item_id);
  
+ --map用のカラム
+ alter table item_image add column image_name varchar(256);
+
+ update item_image
+ set image_name = file_name
+
+  alter table item_image alter column image_name set not null;

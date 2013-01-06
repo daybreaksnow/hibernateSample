@@ -36,6 +36,14 @@
             <!--  many to one ではなく、elementタグを使う -->
             <element type="string" column="FILE_NAME" />
         </set>
+        <map name="itemImageMap" table="item_image" inverse="true">
+            <key>
+                <column name="item_id" not-null="true" />
+            </key>
+            <index column="IMAGE_NAME" type="string" />
+            <!--  many to one ではなく、elementタグを使う -->
+            <element type="string" column="FILE_NAME" />
+        </map>
         <set name="itemCategoryMappings" table="item_category_mapping" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="item_id" not-null="true" />

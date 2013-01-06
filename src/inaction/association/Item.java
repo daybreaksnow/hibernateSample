@@ -5,7 +5,9 @@ package inaction.association;
 import inaction.fetch.ItemCategoryMapping;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -23,6 +25,8 @@ public class Item implements java.io.Serializable {
 	private Date createdDate;
 	/** ItemImageのfileNameカラムとマッピングしている */
 	private Set<String> itemImages = new HashSet(0);
+	/** key:imageName value:fileName */
+	private Map<String, String> itemImageMap = new HashMap<String, String>();
 	private Set itemCategoryMappings = new HashSet(0);
 	private Set bids = new HashSet(0);
 
@@ -117,6 +121,14 @@ public class Item implements java.io.Serializable {
 
 	public void setItemImages(Set<String> itemImages) {
 		this.itemImages = itemImages;
+	}
+
+	public Map<String, String> getItemImageMap() {
+		return itemImageMap;
+	}
+
+	public void setItemImageMap(Map<String, String> itemImageMap) {
+		this.itemImageMap = itemImageMap;
 	}
 
 	public Set<ItemCategoryMapping> getItemCategoryMappings() {
