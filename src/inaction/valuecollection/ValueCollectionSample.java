@@ -16,7 +16,7 @@ import techscore.sample.DaoSupport;
  */
 public class ValueCollectionSample {
 	public static void main(String[] args) {
-		saveImage(1L, "hoge.png");
+		// saveImage(1L, "aa.png");
 		loadItem(1L);
 	}
 

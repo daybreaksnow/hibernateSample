@@ -29,7 +29,7 @@
         <property name="createdDate" type="date">
             <column name="created_date" length="13" />
         </property>
-        <set name="itemImages" table="item_image" inverse="true">
+        <set name="itemImages" table="item_image" inverse="true" sort="inaction.valuecollection.ImageSorter">
             <key>
                 <column name="item_id" not-null="true" />
             </key>
