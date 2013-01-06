@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/01/06 11:47:38 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="inaction.usertype.BidUsertype" table="bid_usertype" schema="public">
+        <id name="bidId" type="long">
+            <column name="bid_id" />
+            <generator class="increment" />
+        </id>
+        <version name="version" type="java.lang.Integer">
+            <column name="version" />
+        </version>
+        <!-- typeにマッピングクラスを指定する -->
+        <property name="amount" type="inaction.usertype.MonetaryAmountUserType">
+            <column name="amount" />
+        </property>
+        <property name="createdDate" type="date">
+            <column name="created_date" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

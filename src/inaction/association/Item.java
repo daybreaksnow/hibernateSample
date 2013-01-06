@@ -21,6 +21,8 @@ public class Item implements java.io.Serializable {
 	private Date startDate;
 	private Date endDate;
 	private Date createdDate;
+	/** ItemImageのfileNameカラムとマッピングしている */
+	private Set<String> itemImages = new HashSet(0);
 	private Set itemCategoryMappings = new HashSet(0);
 	private Set bids = new HashSet(0);
 
@@ -107,6 +109,14 @@ public class Item implements java.io.Serializable {
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public Set<String> getItemImages() {
+		return this.itemImages;
+	}
+
+	public void setItemImages(Set<String> itemImages) {
+		this.itemImages = itemImages;
 	}
 
 	public Set<ItemCategoryMapping> getItemCategoryMappings() {
