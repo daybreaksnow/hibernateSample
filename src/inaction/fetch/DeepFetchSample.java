@@ -30,7 +30,8 @@ public class DeepFetchSample {
 
 		Criteria criteria = session.createCriteria(Item.class);
 		criteria.setFetchMode("itemCategoryMappings", FetchMode.JOIN);
-		criteria.setFetchMode("item", FetchMode.JOIN);
+		//TODO どうやって外部結合深度を設定するか
+		criteria.setFetchMode("itemCategoryMappings.item", FetchMode.JOIN);
 		criteria.add(Restrictions.eq("itemId", itemId));
 		Item item = (Item) criteria.uniqueResult();
 

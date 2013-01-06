@@ -6,5 +6,6 @@
   <table-filter match-schema="public" match-name="item"/>
   <table-filter match-schema="public" match-name="category"/>
   <table-filter match-schema="public" match-name="item_category_mapping"/>
+  <table-filter match-schema="public" match-name="bid_usertype"/>
   
 </hibernate-reverse-engineering>
