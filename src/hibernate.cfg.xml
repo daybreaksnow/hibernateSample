@@ -25,6 +25,8 @@
     <mapping resource="inaction/fetch/ItemCategoryMapping.hbm.xml"/>
     <mapping resource="inaction/usertype/BidUsertype.hbm.xml"/>
     <mapping resource="inaction/valuecollection/ItemImage.hbm.xml"/>
+    <mapping resource="inaction/onetoone/UserOnetoone.hbm.xml"/>
+    <mapping resource="inaction/onetoone/AddressOnetoone.hbm.xml"/>
   </session-factory>
 
 </hibernate-configuration>

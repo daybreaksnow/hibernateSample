@@ -2,11 +2,14 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
+<!-- 
   <table-filter match-schema="public" match-name="bid"/>
   <table-filter match-schema="public" match-name="item"/>
   <table-filter match-schema="public" match-name="category"/>
   <table-filter match-schema="public" match-name="item_category_mapping"/>
   <table-filter match-schema="public" match-name="bid_usertype"/>
   <table-filter match-schema="public" match-name="item_image"/>
-  
+ -->
+  <table-filter match-schema="public" match-name="user_onetoone"/>
+  <table-filter match-schema="public" match-name="address_onetoone"/>
 </hibernate-reverse-engineering>
