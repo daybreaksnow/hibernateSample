@@ -9,7 +9,11 @@
   <table-filter match-schema="public" match-name="item_category_mapping"/>
   <table-filter match-schema="public" match-name="bid_usertype"/>
   <table-filter match-schema="public" match-name="item_image"/>
- -->
   <table-filter match-schema="public" match-name="user_onetoone"/>
   <table-filter match-schema="public" match-name="address_onetoone"/>
+-->
+  <table-filter match-schema="public" match-name="identity_generator"/>
+  <table-filter match-schema="public" match-name="sequence_generator"/>
+  <table-filter match-schema="public" match-name="hilo_generator"/>
+  <table-filter match-schema="public" match-name="uuid_generator"/>
 </hibernate-reverse-engineering>

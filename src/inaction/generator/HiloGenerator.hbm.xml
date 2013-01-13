@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/01/14 1:11:15 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="inaction.generator.HiloGenerator" table="hilo_generator" schema="public">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="hilo" >
+	        <!-- hi値の取得元テーブル名を指定します。未設定の場合、デフォルト値hibernateuniquekeyを用います。 -->
+	        <param name="table">high_value</param>
+    	    <!-- hi値を取得するためのコラム名を指定します。未設定の場合、デフォルト値nextを用います。 -->
+       		<param name="column">next_value</param>
+      	  	<!-- lo値の最大値を指定します。lo値が最大値になった時点で、他のhi値で再計算します。 -->
+        	<param name="max_lo">50</param>
+            </generator>
+        </id>
+        <version name="version" type="java.lang.Long">
+            <column name="version" />
+        </version>
+        <property name="value" type="string">
+            <column name="value" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -27,6 +27,10 @@
     <mapping resource="inaction/valuecollection/ItemImage.hbm.xml"/>
     <mapping resource="inaction/onetoone/UserOnetoone.hbm.xml"/>
     <mapping resource="inaction/onetoone/AddressOnetoone.hbm.xml"/>
+    <mapping resource="inaction/generator/IdentityGenerator.hbm.xml"/>
+    <mapping resource="inaction/generator/SequenceGenerator.hbm.xml"/>
+    <mapping resource="inaction/generator/HiloGenerator.hbm.xml"/>
+    <mapping resource="inaction/generator/UuidGenerator.hbm.xml"/>
   </session-factory>
 
 </hibernate-configuration>
