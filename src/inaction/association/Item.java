@@ -22,6 +22,8 @@ public class Item implements java.io.Serializable {
 	private Long reservePrice;
 	private Date startDate;
 	private Date endDate;
+	/** fomulaのテスト(3.3.2) */
+	private Long bidCount;
 	private Date createdDate;
 	/** ItemImageのfileNameカラムとマッピングしている */
 	private Set<String> itemImages = new HashSet(0);
@@ -155,4 +157,11 @@ public class Item implements java.io.Serializable {
 				+ ", endDate=" + endDate + ", createdDate=" + createdDate + "]";
 	}
 
+	public Long getBidCount() {
+		return bidCount;
+	}
+
+	public void setBidCount(Long bidCount) {
+		this.bidCount = bidCount;
+	}
 }

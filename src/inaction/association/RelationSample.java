@@ -19,8 +19,53 @@ public class RelationSample {
 		// relationItemToBid();
 
 		// deleteItem(19);
-		deleteItemSet(13);
+		// deleteItemSet(13);
+
+		// idLoad(13, 14);
+		fomulaTest(12);
 		System.err.println("end");
+	}
+
+	private static void fomulaTest(long itemId) {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		System.out.println("load item");
+		Item item = (Item) session.load(Item.class, itemId);
+		System.out.println("load item end");
+		System.out.println(item.getBidCount());
+	}
+
+	// 現状のhbmではidを直指定で保存できない。毎回ロードして参照をセットしないとダメなのはダメだろう。
+	private static void idLoad(long itemId, long itemId2) {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		Bid bid = new Bid();
+		bid.setItemId(itemId);
+
+		System.out.println(bid.getItem());
+
+		session.save(bid);
+		bid = (Bid) session.get(Bid.class, bid.getBidId());
+
+		System.out.println(bid.getItem());
+
+		bid.setItemId(itemId2);
+
+		System.out.println(bid.getItem());
+
+		session.save(bid);
+
+		bid = (Bid) session.get(Bid.class, bid.getBidId());
+
+		System.out.println(bid.getItem());
+
+		tx.commit();
+		session.close();
+
 	}
 
 	// cascade-allでitemを消したらbidも消えるかのテスト

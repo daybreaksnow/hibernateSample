@@ -57,5 +57,10 @@
             </key>
             <one-to-many class="inaction.association.Bid" />
         </set>
+        <!-- 3.3.2 -->
+        <property name="bidCount" type="long">
+	        <formula>(select count(*) from bid B where B.item_id = item_id)</formula>
+        </property>
+        
     </class>
 </hibernate-mapping>

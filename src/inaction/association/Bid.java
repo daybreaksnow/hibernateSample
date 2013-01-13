@@ -11,6 +11,8 @@ public class Bid implements java.io.Serializable {
 
 	private long bidId;
 	// TODO item_idを持たせ、そのIDを使って関連を取得するようにはできないのか？？
+	// ここで宣言しても保存されない(hbmでitemフィールドと紐づくようになっているからか)
+	private Long itemId;
 	private Item item;
 	private Long amount;
 	private Long userId;
@@ -77,4 +79,11 @@ public class Bid implements java.io.Serializable {
 				+ userId + ", createdDate=" + createdDate + "]";
 	}
 
+	public Long getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
 }
