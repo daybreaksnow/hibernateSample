@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/01/14 18:01:46 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="fetch.FetchSub2" table="fetch_sub2" schema="public">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <version name="version" type="java.lang.Integer">
+            <column name="version" />
+        </version>
+        <many-to-one name="fetchSub1" class="fetch.FetchSub1" fetch="select">
+            <column name="sub1_id" not-null="true" />
+        </many-to-one>
+        <property name="value" type="string">
+            <column name="value" />
+        </property>
+    </class>
+</hibernate-mapping>

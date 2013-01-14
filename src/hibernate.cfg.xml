@@ -31,6 +31,9 @@
     <mapping resource="inaction/generator/SequenceGenerator.hbm.xml"/>
     <mapping resource="inaction/generator/HiloGenerator.hbm.xml"/>
     <mapping resource="inaction/generator/UuidGenerator.hbm.xml"/>
+    <mapping resource="fetch/FetchRoot.hbm.xml"/>
+    <mapping resource="fetch/FetchSub1.hbm.xml"/>
+    <mapping resource="fetch/FetchSub2.hbm.xml"/>
   </session-factory>
 
 </hibernate-configuration>

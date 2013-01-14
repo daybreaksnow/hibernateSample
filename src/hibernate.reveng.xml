@@ -11,9 +11,13 @@
   <table-filter match-schema="public" match-name="item_image"/>
   <table-filter match-schema="public" match-name="user_onetoone"/>
   <table-filter match-schema="public" match-name="address_onetoone"/>
--->
   <table-filter match-schema="public" match-name="identity_generator"/>
   <table-filter match-schema="public" match-name="sequence_generator"/>
   <table-filter match-schema="public" match-name="hilo_generator"/>
   <table-filter match-schema="public" match-name="uuid_generator"/>
+-->
+  <table-filter match-schema="public" match-name="fetch_root"/>
+  <table-filter match-schema="public" match-name="fetch_sub1"/>
+  <table-filter match-schema="public" match-name="fetch_sub2"/>
+
 </hibernate-reverse-engineering>
