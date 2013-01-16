@@ -21,8 +21,8 @@ public class RelationSample {
 		// deleteItem(19);
 		// deleteItemSet(13);
 
-		// idLoad(13, 14);
-		fomulaTest(12);
+		idLoad(1, 2);
+		// fomulaTest(12);
 		System.err.println("end");
 	}
 
@@ -44,11 +44,15 @@ public class RelationSample {
 		Transaction tx = session.beginTransaction();
 
 		Bid bid = new Bid();
+		bid.setAmount(1L);
 		bid.setItemId(itemId);
 
 		System.out.println(bid.getItem());
 
 		session.save(bid);
+		session.flush();
+		session.clear();
+
 		bid = (Bid) session.get(Bid.class, bid.getBidId());
 
 		System.out.println(bid.getItem());
@@ -62,6 +66,12 @@ public class RelationSample {
 		bid = (Bid) session.get(Bid.class, bid.getBidId());
 
 		System.out.println(bid.getItem());
+
+		Bid bidRef = new Bid();
+		Item item1 = (Item) session.get(Item.class, itemId);
+		bidRef.setItem(item1);
+		bidRef.setAmount(2L);
+		session.save(bidRef);
 
 		tx.commit();
 		session.close();

@@ -8,7 +8,11 @@
             <column name="bid_id" />
             <generator class="increment" />
         </id>
-        <many-to-one name="item" class="inaction.association.Item" fetch="select" cascade="save-update">
+        <property name="itemId" type="java.lang.Long">
+            <column name="item_id" />
+        </property>
+        <!-- このエンティティによってはitem_idの値は変化しない。 -->
+        <many-to-one name="item" class="inaction.association.Item" fetch="select" cascade="save-update" insert="false" update="false">
             <column name="item_id" />
         </many-to-one>
         <property name="amount" type="java.lang.Long">
