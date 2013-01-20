@@ -26,7 +26,6 @@ ALTER TABLE ITEM_MANYTOMANY ADD PRIMARY KEY(item_id);
 
 --中間マッピング
 create table ITEM_CATEGORY_MAPPING_MM(
- mapping_id bigint not null,
  category_id bigint not null,
  item_id bigint not null,
  created_date date,
@@ -34,7 +33,7 @@ create table ITEM_CATEGORY_MAPPING_MM(
 );
 
 --PK
-ALTER TABLE ITEM_CATEGORY_MAPPING_MM ADD PRIMARY KEY(mapping_id);
+ALTER TABLE ITEM_CATEGORY_MAPPING_MM ADD PRIMARY KEY(category_id,item_id);
 
 --item FK
 ALTER TABLE ITEM_CATEGORY_MAPPING_MM ADD CONSTRAINT MAP_ITEM_FK
