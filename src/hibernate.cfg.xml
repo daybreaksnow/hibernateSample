@@ -34,6 +34,9 @@
     <mapping resource="fetch/FetchRoot.hbm.xml"/>
     <mapping resource="fetch/FetchSub1.hbm.xml"/>
     <mapping resource="fetch/FetchSub2.hbm.xml"/>
+    <mapping resource="manytomany/CategoryManytomany.hbm.xml"/>
+    <mapping resource="manytomany/ItemManytomany.hbm.xml"/>
+    <mapping resource="manytomany/ItemCategoryMappingMm.hbm.xml"/>
   </session-factory>
 
 </hibernate-configuration>

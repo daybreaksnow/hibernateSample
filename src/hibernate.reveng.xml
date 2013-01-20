@@ -15,9 +15,12 @@
   <table-filter match-schema="public" match-name="sequence_generator"/>
   <table-filter match-schema="public" match-name="hilo_generator"/>
   <table-filter match-schema="public" match-name="uuid_generator"/>
--->
   <table-filter match-schema="public" match-name="fetch_root"/>
   <table-filter match-schema="public" match-name="fetch_sub1"/>
   <table-filter match-schema="public" match-name="fetch_sub2"/>
+-->
+  <table-filter match-schema="public" match-name="item_manytomany"/>
+  <table-filter match-schema="public" match-name="category_manytomany"/>
+  <table-filter match-schema="public" match-name="item_category_mapping_mm"/>
 
 </hibernate-reverse-engineering>
