@@ -14,11 +14,11 @@
         <property name="name" type="string">
             <column name="name" length="256" />
         </property>
-        <set name="itemCategoryMappingMms" table="item_category_mapping_mm" inverse="true" lazy="true" fetch="select">
+        <set name="categories" table="item_category_mapping_mm" inverse="true" lazy="true" fetch="select" cascade = "all">
             <key>
                 <column name="item_id" not-null="true" />
             </key>
-            <one-to-many class="manytomany.ItemCategoryMappingMm" />
+            <many-to-many column = "category_id" class="manytomany.CategoryManytomany" />
         </set>
     </class>
 </hibernate-mapping>

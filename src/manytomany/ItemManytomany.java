@@ -13,7 +13,7 @@ public class ItemManytomany implements java.io.Serializable {
 	private long itemId;
 	private Long version;
 	private String name;
-	private Set itemCategoryMappingMms = new HashSet(0);
+	private Set<CategoryManytomany> categories = new HashSet(0);
 
 	public ItemManytomany() {
 	}
@@ -25,7 +25,7 @@ public class ItemManytomany implements java.io.Serializable {
 	public ItemManytomany(long itemId, String name, Set itemCategoryMappingMms) {
 		this.itemId = itemId;
 		this.name = name;
-		this.itemCategoryMappingMms = itemCategoryMappingMms;
+		this.categories = itemCategoryMappingMms;
 	}
 
 	public long getItemId() {
@@ -52,12 +52,12 @@ public class ItemManytomany implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Set getItemCategoryMappingMms() {
-		return this.itemCategoryMappingMms;
+	public Set<CategoryManytomany> getCategories() {
+		return this.categories;
 	}
 
-	public void setItemCategoryMappingMms(Set itemCategoryMappingMms) {
-		this.itemCategoryMappingMms = itemCategoryMappingMms;
+	public void setCategories(Set itemCategoryMappingMms) {
+		this.categories = itemCategoryMappingMms;
 	}
 
 }
