@@ -10,8 +10,10 @@ public class ManyToManySample {
 	public static void main(String[] args) {
 		// saveItem();
 		// saveCategory();
-		loadItem(1L);
-		loadCategory(1L);
+		// loadItem(1L);
+		// loadCategory(1L);
+		// deleteItem(2L);
+		deleteItemByCategory(5L, 6L);
 	}
 
 	private static void saveItem() {
@@ -26,7 +28,7 @@ public class ManyToManySample {
 		category.setName("cat1");
 
 		item.getCategories().add(category);
-		// category.getItems().add(item);
+		category.getItems().add(item);
 
 		session.save(item);
 		tx.commit();
@@ -87,4 +89,35 @@ public class ManyToManySample {
 		session.close();
 	}
 
+	private static void deleteItem(Long itemId) {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		System.out.println("start item load.");
+		ItemManytomany item = (ItemManytomany) session.get(
+				ItemManytomany.class, itemId);
+		session.delete(item);
+
+		tx.commit();
+		session.close();
+	}
+
+	private static void deleteItemByCategory(Long categoryId, Long itemId) {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		CategoryManytomany category = (CategoryManytomany) session.get(
+				CategoryManytomany.class, categoryId);
+		for (ItemManytomany item : category.getItems()) {
+			if (itemId.equals(item.getItemId())) {
+				category.getItems().remove(item);
+				break;
+			}
+		}
+
+		tx.commit();
+		session.close();
+	}
 }

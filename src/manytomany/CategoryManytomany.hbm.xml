@@ -17,13 +17,13 @@
         <property name="name" type="string">
             <column name="name" length="256" not-null="true" />
         </property>
-        <set name="items" table="item_category_mapping_mm" inverse="false" lazy="true" fetch="select" cascade="all">
+        <set name="items" table="item_category_mapping_mm" inverse="false" lazy="true" fetch="select" cascade="all-delete-orphan">
             <key>
                 <column name="category_id" not-null="true" />
             </key>
             <many-to-many column="item_id" class="manytomany.ItemManytomany" />
         </set>
-        
+
         <set name="categoryManytomanies" table="category_manytomany" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="parent_category_id" />
