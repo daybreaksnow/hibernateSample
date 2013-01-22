@@ -1,5 +1,6 @@
 package inaction.association;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.hibernate.Session;
@@ -20,8 +21,9 @@ public class RelationSample {
 
 		// deleteItem(19);
 		// deleteItemSet(13);
+		deleteItemSetNew(2);
 
-		idLoad(1, 2);
+		// idLoad(1, 2);
 		// fomulaTest(12);
 		System.err.println("end");
 	}
@@ -103,6 +105,45 @@ public class RelationSample {
 		bids.clear();
 		tx.commit();
 		session.close();
+	}
+
+	// cascade-all-delete-orphenでbidが消えるかのテスト
+	// 例外が発生する：A collection with cascade="all-delete-orphan" was no longer
+	// referenced by the owning entity instance: inaction.association.Item.bids
+	private static void deleteItemSetNull(long itemId) {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		Item item = loadItem(session, itemId);
+		Set bids = item.getBids();
+		item.setBids(null);
+		tx.commit();
+		session.close();
+	}
+
+	// cascade-all-delete-orphenでbidが消えるかのテスト
+	// 例外が発生する： A collection with cascade="all-delete-orphan" was no longer
+	// referenced by the owning entity instance: inaction.association.Item.bids
+	private static void deleteItemSetNew(long itemId) {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		Item item = loadItem(session, itemId);
+		Set bids = item.getBids();
+
+		tx.commit();
+		session.close();
+
+		item.setBids(new LinkedHashSet<Bid>());
+		session = dao.getSession();
+		tx = session.beginTransaction();
+
+		session.update(item);
+		tx.commit();
+		session.close();
+
 	}
 
 	private static void relation() {

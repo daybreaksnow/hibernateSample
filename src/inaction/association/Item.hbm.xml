@@ -50,7 +50,7 @@
             </key>
             <one-to-many class="inaction.fetch.ItemCategoryMapping" />
         </set>
-        
+
         <set name="bids" table="bid" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
             <key>
                 <column name="item_id" />
@@ -61,6 +61,6 @@
         <property name="bidCount" type="long">
 	        <formula>(select count(*) from bid B where B.item_id = item_id)</formula>
         </property>
-        
+
     </class>
 </hibernate-mapping>
