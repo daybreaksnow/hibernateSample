@@ -1,7 +1,9 @@
 package inaction.component;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import techscore.sample.DaoSupport;
 
@@ -29,5 +31,18 @@ public class UserDao extends DaoSupport {
 
 		tx.commit();
 		session.close();
+
+		listByHomeAddressStreet(dao, "street");
+	}
+
+	private static void listByHomeAddressStreet(UserDao dao, String street) {
+		Session session2 = dao.getSession();
+		Transaction tx2 = session2.beginTransaction();
+		Criteria criteria = session2.createCriteria(User.class);
+		// コンポーネント型であっても検索条件に設定可能
+		criteria.add(Restrictions.eq("homeAddress.street", street));
+		System.out.println(criteria.list());
+		tx2.commit();
+		session2.close();
 	}
 }
