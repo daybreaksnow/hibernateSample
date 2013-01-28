@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import techscore.sample.DaoSupport;
@@ -14,6 +16,7 @@ import techscore.sample.DaoSupport;
 public class CriteriaSample {
 
 	public static void main(String[] args) {
+		projectionSample();
 		successSqlRestriction();
 		successSqlRestrictionNest();
 		// failSqlRestriction();
@@ -72,6 +75,35 @@ public class CriteriaSample {
 		System.out.println(bids.size());
 
 		tx.commit();
+		session.close();
+	}
+
+	private static void projectionSample() {
+		listProjection(Projections.rowCount());
+		listProjection(Projections.count("bidId"));
+		listProjection(Projections.property("amount"));
+		listProjection(Projections.groupProperty("amount"));
+		listProjection(Projections.projectionList()
+				.add(Projections.groupProperty("itemId"))
+				.add(Projections.sum("amount")));
+	}
+
+	private static void listProjection(Projection projection) {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+
+		Criteria criteria = session.createCriteria(Bid.class);
+		criteria.setProjection(projection);
+		List resultList = criteria.list();
+		for (Object result : resultList) {
+			System.out.println(result);
+			if (result instanceof Object[]) {
+				for (Object obj : (Object[]) result) {
+					System.out.println(obj);
+				}
+			}
+		}
+
 		session.close();
 	}
 }
