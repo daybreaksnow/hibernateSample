@@ -15,7 +15,8 @@ public class CriteriaSample {
 
 	public static void main(String[] args) {
 		successSqlRestriction();
-		failSqlRestriction();
+		successSqlRestrictionNest();
+		// failSqlRestriction();
 	}
 
 	private static void failSqlRestriction() {
@@ -45,6 +46,27 @@ public class CriteriaSample {
 		criteria.add(Restrictions.sqlRestriction("{alias}.amount = 1"));
 		Criteria subCriteria = criteria.createCriteria("item");
 		subCriteria.add(Restrictions.sqlRestriction("{alias}.name = 'hoge'"));
+		List bids = criteria.list();
+
+		System.out.println(bids.size());
+
+		tx.commit();
+		session.close();
+	}
+
+	// bid→item→mapでcreateAliasとcreateCriteriaを両方使うサンプル
+	private static void successSqlRestrictionNest() {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		Criteria criteria = session.createCriteria(Bid.class);
+		criteria.createAlias("item", "aliasItem");
+		Criteria Subcriteria = criteria
+				.createCriteria("aliasItem.itemCategoryMappings");
+		criteria.add(Restrictions.sqlRestriction("{alias}.amount = 2"));
+		criteria.add(Restrictions.eq("aliasItem.name", "1"));
+		Subcriteria.add(Restrictions.sqlRestriction("{alias}.mapping_id = 1"));
 		List bids = criteria.list();
 
 		System.out.println(bids.size());
