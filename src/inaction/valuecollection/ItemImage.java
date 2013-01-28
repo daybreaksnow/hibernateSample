@@ -15,6 +15,7 @@ public class ItemImage implements java.io.Serializable {
 	private Integer version;
 	private Item item;
 	private String fileName;
+	private String imageName;
 	private Date createdDate;
 
 	public ItemImage() {
@@ -73,4 +74,11 @@ public class ItemImage implements java.io.Serializable {
 		this.createdDate = createdDate;
 	}
 
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
 }

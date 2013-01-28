@@ -17,6 +17,9 @@
         <property name="fileName" type="string">
             <column name="file_name" length="256" not-null="true" />
         </property>
+        <property name="imageName" type="string">
+            <column name="image_name" length="256" not-null="true" />
+        </property>
         <property name="createdDate" type="date">
             <column name="created_date" length="13" />
         </property>
