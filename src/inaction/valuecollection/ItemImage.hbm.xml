@@ -12,7 +12,7 @@
             <column name="version" />
         </version>
         <many-to-one name="item" class="inaction.association.Item" fetch="select">
-            <column name="item_id" not-null="true" />
+            <column name="ref_item_id" not-null="true" />
         </many-to-one>
         <property name="fileName" type="string">
             <column name="file_name" length="256" not-null="true" />

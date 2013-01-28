@@ -29,16 +29,26 @@
         <property name="createdDate" type="date">
             <column name="created_date" length="13" />
         </property>
-        <set name="itemImages" table="item_image" inverse="true" sort="inaction.valuecollection.ImageSorter">
+        <set name="itemImages" table="item_image" inverse="true" sort="inaction.valuecollection.ImageSorter"  cascade="all">
             <key>
-                <column name="item_id" not-null="true" />
+                <column name="ref_item_id" not-null="true" />
             </key>
             <!--  many to one ではなく、elementタグを使う -->
             <element type="string" column="FILE_NAME" />
         </set>
-        <map name="itemImageMap" table="item_image" inverse="true">
+        <idbag name="itemImageBag" table="item_image" cascade="none">
+        	<collection-id type="long" column="image_id">
+        		<generator class="increment"></generator>
+        	</collection-id>
             <key>
-                <column name="item_id" not-null="true" />
+                <column name="ref_item_id" not-null="true" />
+            </key>
+            <!--  many to one ではなく、elementタグを使う -->
+            <element type="string" column="FILE_NAME" />
+        </idbag>
+        <map name="itemImageMap" table="item_image" inverse="true" cascade="all">
+            <key>
+                <column name="ref_item_id" not-null="true" />
             </key>
             <index column="IMAGE_NAME" type="string" />
             <!--  many to one ではなく、elementタグを使う -->

@@ -4,9 +4,11 @@ package inaction.association;
 
 import inaction.fetch.ItemCategoryMapping;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -31,6 +33,7 @@ public class Item implements java.io.Serializable {
 	private Set<String> itemImages = new TreeSet();
 	/** key:imageName value:fileName */
 	private Map<String, String> itemImageMap = new HashMap<String, String>();
+	private Collection<String> itemImageBag = new LinkedList<String>();
 	private Set itemCategoryMappings = new HashSet(0);
 	private Set bids = new HashSet(0);
 
@@ -141,6 +144,14 @@ public class Item implements java.io.Serializable {
 
 	public void setItemCategoryMappings(Set itemCategoryMappings) {
 		this.itemCategoryMappings = itemCategoryMappings;
+	}
+
+	public Collection<String> getItemImageBag() {
+		return itemImageBag;
+	}
+
+	public void setItemImageBag(Collection<String> itemImageBag) {
+		this.itemImageBag = itemImageBag;
 	}
 
 	public Set getBids() {
