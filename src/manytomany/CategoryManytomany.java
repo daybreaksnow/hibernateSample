@@ -16,6 +16,7 @@ public class CategoryManytomany implements java.io.Serializable {
 	private String name;
 	private Set<ItemManytomany> items = new HashSet(0);
 	private Set categoryManytomanies = new HashSet(0);
+	private Set itemsByExtendMap = new HashSet();
 
 	public CategoryManytomany() {
 	}
@@ -83,4 +84,11 @@ public class CategoryManytomany implements java.io.Serializable {
 		this.categoryManytomanies = categoryManytomanies;
 	}
 
+	public Set getItemsByExtendMap() {
+		return itemsByExtendMap;
+	}
+
+	public void setItemsByExtendMap(Set itemsByExtendMap) {
+		this.itemsByExtendMap = itemsByExtendMap;
+	}
 }

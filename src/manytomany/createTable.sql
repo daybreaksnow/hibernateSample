@@ -24,7 +24,7 @@ create table ITEM_MANYTOMANY(
 --Category PK
 ALTER TABLE ITEM_MANYTOMANY ADD PRIMARY KEY(item_id);
 
---’†ŠÔƒ}ƒbƒsƒ“ƒO
+--ï¿½ï¿½ï¿½Ôƒ}ï¿½bï¿½sï¿½ï¿½ï¿½O
 create table ITEM_CATEGORY_MAPPING_MM(
  category_id bigint not null,
  item_id bigint not null,
@@ -39,8 +39,35 @@ ALTER TABLE ITEM_CATEGORY_MAPPING_MM ADD PRIMARY KEY(category_id,item_id);
 ALTER TABLE ITEM_CATEGORY_MAPPING_MM ADD CONSTRAINT MAP_ITEM_FK
  FOREIGN KEY (item_id)
  REFERENCES ITEM_MANYTOMANY(item_id);
- 
+
  --category FK
 ALTER TABLE ITEM_CATEGORY_MAPPING_MM ADD CONSTRAINT MAP_CATEGORY_FK
  FOREIGN KEY (category_id)
  REFERENCES CATEGORY_MANYTOMANY(category_id);
+
+
+
+create table ITEM_CATEGORY_MAPPING_EXTEND(
+ mapping_id bigint not null,
+ ref_category_id bigint not null,
+ ref_item_id bigint not null,
+ created_date date,
+ user_name varchar(100),
+ version bigint
+);
+
+
+
+--PK
+ALTER TABLE ITEM_CATEGORY_MAPPING_EXTEND ADD PRIMARY KEY(mapping_id);
+
+--item FK
+ALTER TABLE ITEM_CATEGORY_MAPPING_EXTEND ADD CONSTRAINT MAP_EXTEND_ITEM_FK
+ FOREIGN KEY (ref_item_id)
+ REFERENCES ITEM_MANYTOMANY(item_id);
+
+ --category FK
+ALTER TABLE ITEM_CATEGORY_MAPPING_EXTEND ADD CONSTRAINT MAP_EXTEND_CATEGORY_FK
+ FOREIGN KEY (ref_category_id)
+ REFERENCES CATEGORY_MANYTOMANY(category_id);
+

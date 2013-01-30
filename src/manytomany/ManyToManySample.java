@@ -8,12 +8,12 @@ import techscore.sample.DaoSupport;
 public class ManyToManySample {
 
 	public static void main(String[] args) {
-		// saveItem();
+		saveItem();
 		// saveCategory();
 		// loadItem(1L);
 		// loadCategory(1L);
 		// deleteItem(2L);
-		deleteItemByCategory(5L, 6L);
+		// deleteItemByCategory(5L, 6L);
 	}
 
 	private static void saveItem() {
