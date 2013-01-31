@@ -1,5 +1,9 @@
 package manytomany;
 
+import interceptor.CreatedDateSaveInterceptor;
+
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -18,7 +22,7 @@ public class ManyToManySample {
 
 	private static void saveItem() {
 		DaoSupport dao = new DaoSupport();
-		Session session = dao.getSession();
+		Session session = dao.getSession(new CreatedDateSaveInterceptor());
 		Transaction tx = session.beginTransaction();
 
 		ItemManytomany item = new ItemManytomany();
@@ -29,6 +33,16 @@ public class ManyToManySample {
 
 		item.getCategories().add(category);
 		category.getItems().add(item);
+
+		ItemCategoryMappingExtend map = new ItemCategoryMappingExtend();
+		map.setItemManytomany(item);
+		map.setUserName("hoge");
+		map.setCategoryManytomany(category);
+		Date dummy = new Date();
+		dummy.setYear(100);
+		map.setCreatedDate(dummy);
+		map.setMappingId(1); // TODO incrementにしたい
+		category.getItemsByExtendMap().add(map);
 
 		session.save(item);
 		tx.commit();

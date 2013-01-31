@@ -20,5 +20,14 @@
             </key>
             <many-to-many column = "category_id" class="manytomany.CategoryManytomany" />
         </set>
+        <set name="categoriesByExtendMap" table="item_category_mapping_extend">
+			<key column="ref_item_id" />
+			<composite-element class="manytomany.ItemCategoryMappingExtend">
+  				<parent name="itemManytomany" />
+  				<many-to-one name="categoryManytomany" class="manytomany.CategoryManytomany" column = "ref_category_id" not-null="true" />
+   				<property name="userName" column="user_name" not-null="true" />
+   				<property name="createdDate" column="created_date" not-null="true" />
+ 			</composite-element>
+		</set>
     </class>
 </hibernate-mapping>

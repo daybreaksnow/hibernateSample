@@ -30,15 +30,14 @@
             </key>
             <one-to-many class="manytomany.CategoryManytomany" />
         </set>
-        <set name="itemsByExtendMap" table="item_category_mappinng_extend">
+        <set name="itemsByExtendMap" table="item_category_mapping_extend">
 			<key column="ref_category_id" />
 			<composite-element class="manytomany.ItemCategoryMappingExtend">
   				<parent name="categoryManytomany" />
-  				<many-to-one name="itemManytomany" class="manytomany.ItemManytomany" column = "item_id" not-null="true" />
-   				<!--
-   				<property name="userName" not-null="true" />
-   				<property name="createDate" not-null="true" />
-   				 -->
+  				<many-to-one name="itemManytomany" class="manytomany.ItemManytomany" column = "ref_item_id" not-null="true" />
+  				<!-- columnの指定がないと自動変換してくれない… -->
+   				<property name="userName" column="user_name" not-null="true" />
+   				<property name="createdDate" column="created_date" not-null="true" />
  			</composite-element>
 		</set>
     </class>
