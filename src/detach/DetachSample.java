@@ -2,11 +2,16 @@ package detach;
 
 import inaction.association.Bid;
 import inaction.association.Item;
+
+import java.util.List;
+
 import manytomany.CategoryManytomany;
 
+import org.hibernate.Criteria;
 import org.hibernate.LockOptions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import techscore.sample.DaoSupport;
 
@@ -14,7 +19,8 @@ public class DetachSample {
 
 	public static void main(String[] args) {
 		// update();
-		flush();
+		// flush();
+		autoFlush();
 		lock();
 		refs();
 	}
@@ -67,6 +73,39 @@ public class DetachSample {
 		session.update(cat);
 		session.flush();
 
+		tx.commit();
+		session.close();
+	}
+
+	private static void autoFlush() {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		CategoryManytomany cat = new CategoryManytomany();
+		cat.setName("cat");
+		session.save(cat);
+
+		Criteria criteria = session.createCriteria(CategoryManytomany.class);
+		// ここで自動でフラッシュされる
+		List result = criteria.list();
+
+		cat.setName("cat0.5");
+
+		tx.commit();
+		session.close();
+
+		session = dao.getSession();
+		tx = session.beginTransaction();
+		cat = (CategoryManytomany) session.get(CategoryManytomany.class,
+				cat.getCategoryId());
+		cat.setName("cat1");
+
+		criteria = session.createCriteria(CategoryManytomany.class);
+		criteria.add(Restrictions.eq("name", "cat1"));
+		// ここで自動でフラッシュされる
+		result = criteria.list();
+		cat.setName("cat2");
 		tx.commit();
 		session.close();
 	}
