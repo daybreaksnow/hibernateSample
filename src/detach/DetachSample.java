@@ -2,6 +2,7 @@ package detach;
 
 import inaction.association.Bid;
 import inaction.association.Item;
+import manytomany.CategoryManytomany;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Session;
@@ -12,7 +13,8 @@ import techscore.sample.DaoSupport;
 public class DetachSample {
 
 	public static void main(String[] args) {
-		update();
+		// update();
+		flush();
 		lock();
 		refs();
 	}
@@ -35,6 +37,35 @@ public class DetachSample {
 		item.setName("2");
 		// もし値が変わってなくとも強制的にupdate文は発行される
 		session.update(item);
+
+		tx.commit();
+		session.close();
+	}
+
+	private static void flush() {
+		DaoSupport dao = new DaoSupport();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		CategoryManytomany cat = new CategoryManytomany();
+		cat.setName("cat");
+		session.save(cat);
+		tx.commit();
+		session.close();
+
+		session = dao.getSession();
+		tx = session.beginTransaction();
+		cat = (CategoryManytomany) session.get(CategoryManytomany.class,
+				cat.getCategoryId());
+		cat.setName("cat1");
+		// version → 1
+		session.flush();
+		// ここでevictしようがしまいがupdate文は発行されるので、versionは2上がることになる。
+		session.evict(cat);
+		cat.setName("cat2");
+		// version → 2
+		session.update(cat);
+		session.flush();
 
 		tx.commit();
 		session.close();
