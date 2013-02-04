@@ -13,11 +13,12 @@ import techscore.sample.DaoSupport;
  */
 public class OneToOneSample extends DaoSupport {
 	public static void main(String[] args) {
-		// saveUserToOhterAddresss();
-		// saveUserToOneAddresss();
+		saveUserToOhterAddresss();
+		saveUserToOneAddresss();
 		// saveAddressToUser();
-		loadUser(2L);
-		loadUser(3L);
+		saveIllegalRelation();
+		// loadUser(5L);
+		// loadUser(3L);
 	}
 
 	// 自宅住所と請求先住所を同一で保存
@@ -63,6 +64,32 @@ public class OneToOneSample extends DaoSupport {
 		user.setBillingAddress(billing);
 
 		session.saveOrUpdate(user);
+
+		tx.commit();
+		session.close();
+	}
+
+	// 複数のユーザに同一の自宅住所を割り当て
+	private static void saveIllegalRelation() {
+		OneToOneSample dao = new OneToOneSample();
+		Session session = dao.getSession();
+		Transaction tx = session.beginTransaction();
+
+		UserOnetoone user1 = new UserOnetoone();
+		user1.setUsername("user1");
+
+		UserOnetoone user2 = new UserOnetoone();
+		user2.setUsername("user2");
+
+		AddressOnetoone home = new AddressOnetoone();
+		home.setStreet("illegalStreet");
+		home.setCity("city");
+
+		user1.setHomeAddress(home);
+		user2.setHomeAddress(home);
+
+		session.saveOrUpdate(user1);
+		session.saveOrUpdate(user2);
 
 		tx.commit();
 		session.close();
