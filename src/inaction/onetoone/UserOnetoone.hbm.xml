@@ -11,9 +11,12 @@
         <version name="version" type="java.lang.Long">
             <column name="version" />
         </version>
-        
+
         <many-to-one name="homeAddress" class="inaction.onetoone.AddressOnetoone" fetch="join" cascade="all" unique="true">
             <column name="home_address_id" />
+        </many-to-one>
+        <many-to-one name="billingAddress" class="inaction.onetoone.AddressOnetoone" fetch="join" cascade="all" unique="true">
+            <column name="billing_address_id" />
         </many-to-one>
         <property name="username" type="string">
             <column name="username" length="30" />

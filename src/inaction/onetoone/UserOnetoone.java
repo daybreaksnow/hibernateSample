@@ -9,6 +9,7 @@ public class UserOnetoone implements java.io.Serializable {
 
 	private long userId;
 	private AddressOnetoone homeAddress;
+	private AddressOnetoone billingAddress;
 	private String username;
 	private Long version;
 
@@ -40,6 +41,14 @@ public class UserOnetoone implements java.io.Serializable {
 
 	public void setHomeAddress(AddressOnetoone address) {
 		this.homeAddress = address;
+	}
+
+	public AddressOnetoone getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(AddressOnetoone billingAddress) {
+		this.billingAddress = billingAddress;
 	}
 
 	public String getUsername() {

@@ -2,6 +2,7 @@ create table USER_ONETOONE(
  user_id bigint not null,
  username varchar(30),
  home_address_id bigint,
+ billing_address_id bigint,
  version bigint
 )
 ;
@@ -23,4 +24,14 @@ ALTER TABLE ADDRESS_ONETOONE ADD PRIMARY KEY(address_id);
 --FK
 ALTER TABLE USER_ONETOONE ADD CONSTRAINT USER_ADDRESS_ONETOONE_FK
  FOREIGN KEY (home_address_id)
+ REFERENCES ADDRESS_ONETOONE(address_id);
+ 
+ --FK
+ALTER TABLE USER_ONETOONE ADD CONSTRAINT USER_ADDRESS_ONETOONE_HOME_FK
+ FOREIGN KEY (home_address_id)
+ REFERENCES ADDRESS_ONETOONE(address_id);
+ 
+  --FK
+ALTER TABLE USER_ONETOONE ADD CONSTRAINT USER_ADDRESS_ONETOONE_BILLING_FK
+ FOREIGN KEY (billing_address_id)
  REFERENCES ADDRESS_ONETOONE(address_id);

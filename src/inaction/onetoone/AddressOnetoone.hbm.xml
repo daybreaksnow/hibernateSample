@@ -11,7 +11,7 @@
         <version name="version" type="java.lang.Long">
             <column name="version" />
         </version>
-        
+
         <property name="street" type="string">
             <column name="street" length="250" />
         </property>
@@ -21,6 +21,7 @@
         <property name="zipCode" type="string">
             <column name="zip_code" length="10" />
         </property>
-        <one-to-one name="user" class="inaction.onetoone.UserOnetoone" property-ref="homeAddress" cascade="save-update"/>
+        <one-to-one name="userByHomeAddress" class="inaction.onetoone.UserOnetoone" property-ref="homeAddress" cascade="save-update"/>
+        <one-to-one name="userByBillingAddress" class="inaction.onetoone.UserOnetoone" property-ref="billingAddress" cascade="save-update"/>
     </class>
 </hibernate-mapping>
